@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: udagram-user
-  name: udagram-user
+    service: backend-user
+  name: backend-user
 spec:
   replicas: 1
   selector:
     matchLabels:
-      service: udagram-user
+      service: backend-user
   template:
     metadata:
       labels:
-        service: udagram-user
+        service: backend-user
     spec:
       containers:
         - image: mysterious588/udagram-api-user:v1
-          name: udagram-user
+          name: udagram-api-user
           ports:
             - containerPort: 8080
           imagePullPolicy: Always  
@@ -65,13 +65,13 @@ spec:
                   key: POSTGRES_HOST
             - name: POSTGRES_USERNAME
               valueFrom:
-                configMapKeyRef:
-                  name: env-config
+                SecretKeyRef:
+                  name: env-secret
                   key: POSTGRES_USERNAME
             - name: POSTGRES_PASSWORD
               valueFrom:
-                configMapKeyRef:
-                  name: env-config
+                SecretKeyRef:
+                  name: env-secret
                   key: POSTGRES_PASSWORD
 
       restartPolicy: Always
