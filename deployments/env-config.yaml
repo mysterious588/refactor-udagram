@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  POSTGRES_USERNAME: mysterious588
+  POSTGRES_PASSWORD: potato588
+  AWS_BUCKET: "aws-bucket-3737"
+  AWS_REGION: "us-west-2"
+  AWS_PROFILE: "default"
+  JWT_SECRET: "hello"
+  URL: "http://localhost:8100"
+metadata:
+  name: env-config
